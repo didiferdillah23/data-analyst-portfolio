@@ -1,0 +1,493 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: #fff7fb;
+  color: #2d003b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Topbar  */
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  font-size: 36px;
+  background: linear-gradient(90deg, #ffffffcc, #fff1f8);
+  border-bottom: 1px solid rgba(45,0,59,0.06);
+  z-index: 30;
+  transition: all 0.3s ease;
+}
+
+/* Wrapper Navbar sudah ada, ini styling nav + links */
+.nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav a {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6a0454;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* Hover efek garis bawah glowing */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #e2007a, #ff4e9b);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 60%;
+}
+
+.nav a:hover {
+  color: #e2007a;
+  background: #ffe3f1;
+}
+
+/* Active page */
+.nav a.active {
+  color: #fff;
+  background: #e2007a;
+  box-shadow: 0 4px 12px rgba(226,0,122,0.25);
+}
+
+.nav a.active::after {
+  width: 70%;
+  background: #fff;
+}
+
+
+   /* Responsive Navbar */
+@media (max-width: 720px) {
+  .topbar {
+    padding: 16px 20px;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .nav a {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+.brand {
+  font-weight: 800;
+  color: #e2007a;
+  letter-spacing: 1px;
+}
+.nav { display: flex; gap: 12px; }
+.nav-btn {
+  background: transparent;
+  border: 0;
+  padding: 8px 14px;
+  font-weight: 600;
+  color: #6a0454;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.nav-btn:hover { background: rgba(226,0,122,0.06); }
+
+/* Layout */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px; }
+
+/* Hero/Cover */
+.hero {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(180deg, #ffdff0, #fff7fb);
+  padding: 36px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(45,0,59,0.06);
+  transition: all 0.3s ease;
+}
+.hero-left { display: flex; justify-content: center; align-items: center; }
+.portrait-wrap { position: relative; width: 100%; display: flex; justify-content: center; }
+.portrait {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 6px solid #fff;
+  box-shadow: 0 12px 30px rgba(45,0,59,0.12);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  z-index: 2;
+}
+.portrait:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(45,0,59,0.2);
+}
+.accent-rect {
+  position: absolute;
+  left: 28px; top: 40px;
+  width: 220px; height: 320px;
+  background: linear-gradient(180deg,#ff9acb,#ffb6d9);
+  border-radius: 14px;
+  transform: rotate(-6deg);
+  box-shadow: 0 14px 40px rgba(226,0,122,0.08);
+  z-index: 1;
+}
+.hero-right { padding: 6px 0; }
+.intro-sub { font-weight: 600; color: #8a2a5b; margin-bottom: 6px; font-size: 1.1rem; }
+.hero-title {
+  font-size: 2rem;
+  margin: 0 0 10px;
+  color: #2d003b;
+  letter-spacing: 1px;
+}
+.role-pill {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid rgba(45,0,59,0.06);
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #e2007a;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+.short-desc {
+  color: #5b2b4b;
+  line-height: 1.5;
+  max-width: 560px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+/* .hero-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+} */
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+/* Primary / Hero Buttons */
+/* .btn-primary {
+  background-color: #e2007a;
+  color: #fff;
+  border: none;
+} */
+/* .btn-primary:hover {
+  background-color: #ff4e9b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255,78,155,0.2);
+} */
+
+/* Outline / Ghost Buttons */
+.btn-ghost {
+  background: transparent;
+  color: #6a0454;
+  border: 1px solid #e2007a;
+}
+.btn-ghost:hover {
+  background: #ffe6f0;
+  color: #e2007a;
+  transform: translateY(-2px);
+}
+
+/* Projects */
+.projects-section { padding: 40px; background-color: #f9f9f9; }
+.projects-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex-wrap: nowrap;
+}
+.project-card {
+  background: #fff;
+  flex: 0 0 32%;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(226,0,122,0.08), rgba(108,99,255,0.08));
+  opacity: 0;
+  border-radius: 14px;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.project-card:hover::before { opacity: 1; }
+.project-card h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  background: linear-gradient(90deg,#ff4e9b,#6c63ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 10px 0;
+  transition: transform 0.25s ease;
+}
+.project-card:hover h3 { transform: translateY(-2px); }
+.project-card p { font-size: 0.95rem; text-align: center; color: #555; margin-bottom: 15px; }
+
+/* Project Buttons inside cards */
+.project-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+}
+.project-buttons button {
+  flex: 1;
+  padding: 10px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #e2007a;
+  background: transparent;
+  color: #6a0454;
+  transition: all 0.2s ease;
+}
+.project-buttons button:hover {
+  background-color: #ffe6f0;
+  color: #e2007a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(226,0,122,0.2);
+}
+/* Projects */
+.projects-section { padding: 40px; background-color: #f9f9f9; }
+.projects-grid {
+display: flex;
+gap: 20px;
+overflow-x: auto;
+scroll-behavior: smooth;
+flex-wrap: nowrap;
+}
+.project-card {
+background: #fff;
+flex: 0 0 32%;
+padding: 20px;
+border-radius: 14px;
+box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+display: flex;
+flex-direction: column;
+/* START: Tambahan untuk membuat tombol berada di bawah */
+justify-content: space-between; /* Untuk mendorong elemen terakhir (tombol) ke bawah */
+/* END: Tambahan */
+align-items: center;
+position: relative;
+overflow: hidden;
+transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+/* ... (CSS lainnya) ... */
+.project-card p {
+font-size: 0.95rem;
+text-align: center;
+color: #555;
+margin-bottom: 15px;
+/* START: Tambahan agar deskripsi memanjang, mendorong tombol ke bawah */
+flex-grow: 1;
+/* END: Tambahan */
+}
+
+/* Project Buttons inside cards */
+.project-buttons {
+display: flex;
+gap: 10px;
+justify-content: center;
+width: 100%;
+/* START: Tambahan agar tombol tidak menggunakan margin-bottom yang ada di paragraf */
+margin-top: auto; 
+/* END: Tambahan */
+}
+
+
+/* Scrollbar for projects */
+.projects-grid::-webkit-scrollbar { height: 8px; }
+.projects-grid::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+.projects-grid::-webkit-scrollbar-thumb { background: #ff88c6; border-radius: 8px; }
+
+
+   /* Sections, Profile & Contact */
+
+.section { margin-top: 36px; }
+.section-inner { padding: 24px; background: #fff; border-radius: 14px; box-shadow: 0 8px 24px rgba(45,0,59,0.05); }
+.section h2 {
+  margin: 0 0 10px 0;
+  text-align: justify;
+  color: #2d003b;
+  display: inline-block;
+  position: relative;
+}
+.section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  text-align: justify;
+  background: linear-gradient(90deg,#ff4e9b,#6c63ff);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.section p {
+  text-align: justify;
+}
+.section h2:hover::after { transform: scaleX(1); }
+.section-sub { color: #6d4160; margin-bottom: 16px; font-size: 1rem; }
+
+.two-col { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; }
+.profile-photo { width: 100%; border-radius: 12px; border: 6px solid #fff; box-shadow: 0 12px 30px rgba(45,0,59,0.08); object-fit: cover; }
+.meta-list { margin-top: 14px; color: #5b2b4b; line-height: 1.6; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 360px; gap: 18px; margin-top: 12px; }
+.contact-card input, .contact-card textarea { width: 100%; padding: 10px; border: 1px solid rgba(45,0,59,0.06); border-radius: 8px; margin-bottom: 12px; font-family: inherit; }
+.contact-info-card { padding: 18px; background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(45,0,59,0.05); }
+
+#contactForm button.btn-primary {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+#contactForm button.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(255,78,155,0.35);
+}
+
+.footer { text-align: center; margin: 28px 0; color: #6d4160; }
+
+
+   /* Responsive */
+
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; padding: 24px; }
+  .portrait { width: 260px; height: 340px; }
+  .accent-rect { display: none; }
+  .two-col { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  main { margin: 16px; }
+}
+@media (max-width: 768px) { .project-card { flex: 0 0 80%; } }
+
+/* -----------------------------------
+ * MODAL POPUP GALLERY (Telah Ditingkatkan)
+ * ----------------------------------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  /* Z-Index ditingkatkan untuk memastikan modal di atas navbar */
+  z-index: 9999; 
+  background: rgba(0,0,0,0.8); /* Latar belakang sedikit lebih gelap agar konten lebih menonjol */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease; /* Transisi yang sedikit diperpanjang agar lebih halus */
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-panel {
+  background: #fff;
+  padding: 20px;
+  width: 90%; /* Menggunakan 90% lebar untuk responsivitas yang lebih baik */
+  max-width: 900px; /* Maksimal lebar ditingkatkan untuk tampilan preview yang lebih besar */
+  border-radius: 14px;
+  max-height: 90vh; /* Maksimal tinggi ditingkatkan */
+  overflow-y: auto;
+  position: relative;
+  /* Tambahkan Z-index untuk memastikan panel di atas overlay pada beberapa browser */
+  z-index: 10000; 
+  animation: fadeIn .4s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+  from { transform: scale(.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  right: 15px; /* Sesuaikan posisi */
+  top: 15px; /* Sesuaikan posisi */
+  background: #ff4e9b; /* Ubah warna agar seragam dengan tema project */
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10001; /* Pastikan tombol tutup di atas konten modal */
+  transition: background .2s ease;
+}
+.modal-close:hover {
+    background: #e2007a;
+}
+
+.modal-panel img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0; /* Hapus margin bawah jika gambar adalah konten utama */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
